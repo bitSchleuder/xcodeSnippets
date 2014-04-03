@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# pragma mark NSTableViewDataSource - Drop
+- (NSDragOperation)tableView:(NSTableView*)tv validateDrop:(id &lt;NSDraggingInfo&gt;)info proposedRow:(int)row proposedDropOperation:(NSTableViewDropOperation)op
+{
+    NSLog(@"Row: %i", row);
+    return NSDragOperationEvery;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView acceptDrop:(id &lt;NSDraggingInfo&gt;)info
+              row:(int)row dropOperation:(NSTableViewDropOperation)operation
+{
+    NSLog(@"Row: %i", row);
+    return YES;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6FB8202C-9F62-4874-8CF7-545E9D5350B3</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Drop - VAlidate and Accept</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

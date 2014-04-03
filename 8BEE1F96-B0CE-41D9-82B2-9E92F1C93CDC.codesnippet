@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# pragma mark NSDraggingDestination Protocol
+- (NSDragOperation)draggingEntered:(id &lt;NSDraggingInfo&gt;)sender {
+    NSPasteboard *pboard;
+    NSDragOperation sourceDragMask;
+    
+    sourceDragMask = [sender draggingSourceOperationMask];
+    pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSColorPboardType] ) {
+        if (sourceDragMask &amp; NSDragOperationGeneric) {
+            return NSDragOperationGeneric;
+        }
+    }
+    if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
+        if (sourceDragMask &amp; NSDragOperationLink) {
+            return NSDragOperationLink;
+        } else if (sourceDragMask &amp; NSDragOperationCopy) {
+            return NSDragOperationCopy;
+        }
+    }
+    return NSDragOperationNone;
+}
+
+- (BOOL)performDragOperation:(id &lt;NSDraggingInfo&gt;)sender {
+    NSPasteboard *pboard;
+    NSDragOperation sourceDragMask;
+    
+    sourceDragMask = [sender draggingSourceOperationMask];
+    pboard = [sender draggingPasteboard];
+    
+    if ( [[pboard types] containsObject:NSColorPboardType] ) {
+        // Only a copy operation allowed so just copy the data
+        //        NSColor *newColor = [NSColor colorFromPasteboard:pboard];
+        //        [self setColor:newColor];
+    } else if ( [[pboard types] containsObject:NSFilenamesPboardType] ) {
+        NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
+        
+        // Depending on the dragging source and modifier keys,
+        // the file data may be copied or linked
+        //        if (sourceDragMask &amp; NSDragOperationLink) {
+        //            [self addLinkToFiles:files];
+        //        } else {
+        //            [self addDataFromFiles:files];
+        //        }
+    }
+    return YES;
+}
+
+- (NSDragOperation)draggingUpdated:(id &lt; NSDraggingInfo &gt;)sender
+{
+    return [super draggingUpdated:sender];
+}
+
+- (void)draggingEnded:(id &lt; NSDraggingInfo &gt;)sender
+{
+    
+}
+
+- (void)draggingExited:(id &lt; NSDraggingInfo &gt;)sender
+{
+    
+}
+
+- (BOOL)prepareForDragOperation:(id &lt; NSDraggingInfo &gt;)sender
+{
+    return [super prepareForDragOperation:sender];
+}
+
+- (void)updateDraggingItemsForDrag:(id &lt; NSDraggingInfo &gt;)sender
+{
+    
+}
+
+- (BOOL)wantsPeriodicDraggingUpdates
+{
+    return [super wantsPeriodicDraggingUpdates];
+}
+
+- (void)concludeDragOperation:(id &lt; NSDraggingInfo &gt;)sender
+{
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8BEE1F96-B0CE-41D9-82B2-9E92F1C93CDC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Drop - NSDraggingDestination Messages</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
